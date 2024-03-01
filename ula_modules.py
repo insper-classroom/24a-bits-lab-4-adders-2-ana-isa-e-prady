@@ -11,7 +11,11 @@ from myhdl import *
 def halfAdder(a, b, soma, carry):
     @always_comb
     def comb():
-        pass
+        # soma = Signal(bool(0))
+        # carry = Signal(bool(0))
+
+        soma.next = ((not a ) and b) or (a and (not b))
+        carry.next = a and b 
 
     return instances()
 
