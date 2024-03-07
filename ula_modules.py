@@ -52,6 +52,10 @@ def adder2bits(x, y, soma, carry):
 def adder(x, y, soma, carry):
     @always_comb
     def comb():
-        pass
+        carry_in = 0  # Definindo carry_in inicialmente como 0
+        for i in range(len(x)):
+            soma[i], carry_out = fullAdder(x[i], y[i], carry_in)
+            carry_in = carry_out  # O carry_out deste bit é o carry_in do próximo bit
+        soma[-1] = carry_out
 
     return instances()
